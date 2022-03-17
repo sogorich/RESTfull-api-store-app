@@ -1,0 +1,10 @@
+*.log
+*.sqlite3
+
+.pyc
+*.pyc
+
+media/
+static/
+__pycache__/
+migrations/
