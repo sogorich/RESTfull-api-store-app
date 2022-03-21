@@ -14,5 +14,5 @@ class PermissionIndividualActionsViewSetMixin(viewsets.GenericViewSet):
         try:
             return [permission() for permission in self.permission_classes_for_actions[self.action]]
 
-        except Exception:
+        except (KeyError, Exception):
             return super().get_permissions()

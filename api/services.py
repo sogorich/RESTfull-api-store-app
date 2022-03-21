@@ -6,21 +6,21 @@ from django.core.exceptions import ObjectDoesNotExist
 from typing import Any
 
 
-def get_all_or_filter(model: Model, **kwargs: Any) -> QuerySet:
+def get_all_or_filter(model: Model, **fields: Any) -> QuerySet:
     """ 
         Возвращает QuerySet с результатом выборки по указанным фильтрам, если
         фильтры отсутствуют - возвращаются все записи. 
     """
 
-    return model.objects.filter(**kwargs) if kwargs else model.objects.all()
+    return model.objects.filter(**fields) if fields else model.objects.all()
 
 
-def get_object_or_none(model: Model, **kwargs: Any) -> object | None:
+def get_object_or_none(model: Model, **fields: Any) -> object | None:
     """ 
         Возращает объект записи из базы даных, при отсутствии объекта возвращается None. 
     """
     try:
-        object_ = model.objects.get(**kwargs)
+        object_ = model.objects.get(**fields)
 
     except ObjectDoesNotExist:
         object_ = None

@@ -42,7 +42,6 @@ class Photo(DateTimeFieldsModel):
     """ Модель фотографии товара. """
 
     photo = models.ImageField('Фото товара', upload_to='photos/%d/%m/%Y')
-
     updated = None
 
     def __str__(self) -> str:
